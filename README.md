@@ -9,10 +9,11 @@ document archive organizer for e-books and PDFs.
 flatpak-builder --user --install --force-clean build-dir io.github.read-flow.yml
 ```
 
-`flatpak-builder` needs Linux (bubblewrap-based sandboxing) — this can't be built or tested on
-macOS. The manifest's build logic is otherwise identical to the one verified working in the main
-repo's CI (`.github/workflows/release.yml`, job `build-flatpak`); only the source pin (`type: git`
-here vs. a local checkout there) differs.
+The build logic (SDK extensions, toolchain install, build commands) is identical to the manifest
+verified working in the main repo's CI (`.github/workflows/release.yml`, job `build-flatpak`) —
+confirmed green end-to-end on v0.1.1, including mupdf's full C/C++ compile and the entire
+libcosmic/wgpu/sqlx stack (run 29185080376). Only the `sources:` entry for the app itself differs
+here: a `type: git` pin to a release tag/commit, instead of the local checkout CI uses.
 
 ## Files
 
@@ -24,5 +25,5 @@ here vs. a local checkout there) differs.
 
 ## Status
 
-Not yet submitted to Flathub. Manifest logic is CI-verified (main repo); this repo's own
-`type: git` source pin has not been build-tested (needs a Linux machine with `flatpak-builder`).
+Manifest and build logic verified via the main repo's CI. Submitting to Flathub itself (a PR
+against `github.com/flathub/flathub`) is the next step.
