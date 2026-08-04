@@ -17,9 +17,10 @@
 #      Cargo.lock / pwa/package-lock.json (see the main repo's
 #      .github/workflows/release.yml `build-flatpak` job for the exact
 #      generator invocations).
-#   3. Bump the rust-dist archive's version/sha256 below if cargo's MSRV
-#      requirements have moved past it (see Cargo.toml `rust-version` in the
-#      main repo for the floor; this should stay comfortably above it).
+#   3. Bump the rust-dist archives' version/sha256 below (both x86_64 and
+#      aarch64 — Flathub builds both) if cargo's MSRV requirements have moved
+#      past it (see Cargo.toml `rust-version` in the main repo for the floor;
+#      this should stay comfortably above it).
 
 app-id: io.github.read-flow
 runtime: org.freedesktop.Platform
@@ -109,6 +110,12 @@ modules:
       - cargo-sources.json
       - node-sources.json
       - type: archive
+        only-arches: [x86_64]
         url: https://static.rust-lang.org/dist/rust-1.97.0-x86_64-unknown-linux-gnu.tar.xz
         sha256: 1cf17e4905b841d4c8e3f76467ac148d55fb3f54bf213c86f0d287a36471d904
+        dest: rust-dist
+      - type: archive
+        only-arches: [aarch64]
+        url: https://static.rust-lang.org/dist/rust-1.97.0-aarch64-unknown-linux-gnu.tar.xz
+        sha256: 4c88fe30a748a8853c19f4e8876a64b32005bc4cbcde48e93732d06a430e808a
         dest: rust-dist
