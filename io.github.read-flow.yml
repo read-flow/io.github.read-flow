@@ -106,8 +106,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/read-flow/read-flow.git
-        tag: v0.7.0
-        commit: ce4e7f2527a4fedf642ed76fa6e7e13799364dfa
+        tag: v0.7.1
+        commit: fe81d1ca8934e5aa2bbf81e9a7bc9db380c69bd5
       - cargo-sources.json
       - node-sources.json
       - type: archive
